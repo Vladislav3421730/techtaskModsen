@@ -19,12 +19,12 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/login")
+    @PostMapping(value = "/login", consumes = "application/json",produces = "application/json")
     public ResponseEntity<JwtResponseDto> createToken(@RequestBody LoginUserDto userDto){
         return authService.createAuthToken(userDto);
     }
 
-    @PostMapping("/register")
+    @PostMapping(value = "/register",consumes = "application/json",produces = "application/json")
     public ResponseEntity<ResponseDto> Registration(@RequestBody RegisterUserDto userDto){
         return authService.registerUser(userDto);
     }

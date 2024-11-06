@@ -2,10 +2,7 @@ package com.example.libraryapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Entity
@@ -13,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Book {
 
     @Id
@@ -27,7 +25,7 @@ public class Book {
     private String description;
     private String author;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "book")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "book")
     @JsonIgnore
     private BookStatus bookStatus;
 
@@ -36,4 +34,12 @@ public class Book {
         bookStatus.setBook(this);
     }
 
+    public Book(Long id, String ISBN, String name, String genre, String description, String author) {
+        this.id = id;
+        this.ISBN = ISBN;
+        this.name = name;
+        this.genre = genre;
+        this.description = description;
+        this.author = author;
+    }
 }

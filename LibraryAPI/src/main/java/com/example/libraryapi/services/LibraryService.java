@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface LibraryService {
 
-    List<BookDto> getAvailableBooks();
-    void updateBookStatus(BookStatusDto bookStatusDto);
+    List<BookDto> findAvailableBooks();
+    List<BookStatusDto> findAll();
+    BookStatusDto findBookStatusById(Long id);
+    BookStatusDto updateBookStatus(BookStatusDto bookStatusDto);
 
 }

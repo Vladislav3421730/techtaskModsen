@@ -1,7 +1,7 @@
 package com.example.libraryapi.repositories;
 import com.example.libraryapi.models.BookStatus;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface BookStatusRepository extends CrudRepository<BookStatus,Long> {
+public interface BookStatusRepository extends JpaRepository<BookStatus,Long> {
 }

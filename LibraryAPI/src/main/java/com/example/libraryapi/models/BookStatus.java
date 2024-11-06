@@ -22,14 +22,14 @@ public class BookStatus {
     private Long id;
 
     @Column(name = "borrowed_at")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime borrowedAt;
 
     @Column(name = "due_date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dueDate;
 
-    @OneToOne(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "book_id")
     private Book book;
 
