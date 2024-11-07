@@ -35,11 +35,10 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public BookDto update(BookDto bookDto) {
-        Book book=bookRepository.findById(bookDto.getId())
-                .orElseThrow(()-> new BookNotFoundException(String.format("Book with id %d wasn't found",bookDto.getId())));
-        modelMapper.map(bookDto, book);
-        bookRepository.save(book);
-        return modelMapper.map(book, BookDto.class);
+        Book existingBook=bookRepository.findById(bookDto.getId())
+                .orElseThrow(()-> new BookNotFoundException(String.format("Book with id %d wasn't found. Updating is impossible",bookDto.getId())));
+        modelMapper.map(bookDto, existingBook);
+        return modelMapper.map(bookRepository.save(existingBook), BookDto.class);
     }
 
     @Override
@@ -47,7 +46,7 @@ public class BookServiceImpl implements BookService {
     public void delete(Long id) {
         Book book=bookRepository.findById(id)
                 .orElseThrow(()-> new BookNotFoundException(String.format("Book with id %d wasn't found. Deleting is impossible",id)));
-        bookRepository.deleteById(id);
+        bookRepository.delete(book);
     }
 
     @Override

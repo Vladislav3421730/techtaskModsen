@@ -50,7 +50,9 @@ public class LibraryServiceImpl implements LibraryService {
     @Override
     @Transactional
     public BookStatusDto updateBookStatus(BookStatusDto bookStatusDto) {
-        BookStatus bookStatus = modelMapper.map(bookStatusDto, BookStatus.class);
-        return modelMapper.map(bookStatusRepository.save(bookStatus),BookStatusDto.class);
+        BookStatus existingBookStatus=bookStatusRepository.findById(bookStatusDto.getId())
+                .orElseThrow(()->new BookStatusNotFoundException(String.format("Status with id %d wasn't found. Updating is impossible",bookStatusDto.getId())));
+        modelMapper.map(bookStatusDto, existingBookStatus);
+        return modelMapper.map(bookStatusRepository.save(existingBookStatus),BookStatusDto.class);
     }
 }
