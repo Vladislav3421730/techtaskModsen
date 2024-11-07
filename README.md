@@ -25,5 +25,5 @@ http://localhost:8080/auth/login
 http://localhost:8080/auth/register
 ```
 При входе в систему через ```http://localhost:8080/auth/login``` вам выдаётся token, который надо вставить в header Authorization в Bearer token<br>
-Дополнительное примечание: долгое время пытался написать на микросервисах, но к сожалению возникли проблемы проблемы с конфигурацией Spring Cloud,Spring Security и Docker. 
+Дополнительное примечание: долгое время пытался написать на микросервисах, но к сожалению возникли проблемы с конфигурацией Spring Cloud,Spring Security и Docker. 
 В ходе выполнения изучил такие темы как Микросервисная архитектура, Spring Cloud Eureka Server, Spring Cloud Eureka Client, Api GateWay.
