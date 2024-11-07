@@ -1,5 +1,6 @@
 package com.example.libraryapi.exceptions;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.text.SimpleDateFormat;
@@ -9,8 +10,13 @@ import java.util.TimeZone;
 
 
 @Data
+@Schema(description = "Сущность для отправки ответа в случае ошибки")
 public class AppError {
+
+    @Schema(description = "Сообщение ошибки")
     private String message;
+
+    @Schema(description = "Время возникновения ошибки", example = "2024-11-07 10:30:00")
     private String timestamp;
 
     public AppError(String message){

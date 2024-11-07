@@ -47,9 +47,10 @@ public class AuthControllerTests {
     @Test
     void testLogin() throws Exception {
 
-        LoginUserDto loginUserDto=new LoginUserDto();
-        loginUserDto.setUsername("user");
-        loginUserDto.setUsername("q1w2e3");
+        LoginUserDto loginUserDto= LoginUserDto.builder()
+                .username("user")
+                .password("q1w2e3")
+                .build();
 
         String content = objectWriter.writeValueAsString(loginUserDto);
 
@@ -70,10 +71,12 @@ public class AuthControllerTests {
     @Test
     void testRegisterUserSuccess() throws Exception {
 
-        RegisterUserDto registerUserDto = new RegisterUserDto();
-        registerUserDto.setUsername("User");
-        registerUserDto.setPassword("q1w2e3");
-        registerUserDto.setName("Vlad");
+        RegisterUserDto registerUserDto = RegisterUserDto.builder()
+                .name("Vlad")
+                .username("User")
+                .password("q1w2e3")
+                .build();
+
 
         String content = objectWriter.writeValueAsString(registerUserDto);
 

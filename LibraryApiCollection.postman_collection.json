@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "f2a03f26-03ee-4881-9758-d37fa832767b",
+		"name": "LibraryApiCollection",
+		"description": "Postman Коллекция для работы с LibraryAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29171033",
+		"_collection_link": "https://solar-trinity-124167.postman.co/workspace/3b8ccce8-e323-47dd-a41b-98d3d65f7c8b/collection/29171033-f2a03f26-03ee-4881-9758-d37fa832767b?action=share&source=collection_link&creator=29171033"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "LoginAsAdmin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl0sInN1YiI6IkFkbWluIiwiaWF0IjoxNzMwOTAzNDQxLCJleHAiOjE3MzA5MDUyNDF9.DYWzgwZypBKnnRKAb1eVuvrUiJP6VMFkmupOtG_yoxU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Admin\",\r\n    \"password\" : \"q1w2e3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Запрос для входа в систему с ролью ADMIN"
+					},
+					"response": []
+				},
+				{
+					"name": "LoginAsUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoiVXNlciIsImlhdCI6MTczMDkwMzU2OSwiZXhwIjoxNzMwOTA1MzY5fQ.qF7HJCojeVHCTsxuuViJ96JTQBQuL67gvi-Ql3woEd0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"User\",\r\n    \"password\" : \"q1w2e3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Запрос для входа в систему с ролью ADMIN"
+					},
+					"response": []
+				},
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"User2\",\r\n    \"password\" : \"q1w2e3\",\r\n    \"name\" : \"Владислав\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Запрос для регистрации пользователя. При регистрации присваивается роль User"
+					},
+					"response": []
+				}
+			],
+			"description": "В данной паке находятся HTTP запросы для авторизации и регистрации. В бд уже есть пользовователи с ролью USER и ADMIN. И соответственно можно получить token для пользователей с разными ролями."
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "GetAllBooks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoiVXNlciIsImlhdCI6MTczMDkwMzU2OSwiZXhwIjoxNzMwOTA1MzY5fQ.qF7HJCojeVHCTsxuuViJ96JTQBQuL67gvi-Ql3woEd0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/book/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"get"
+							]
+						},
+						"description": "Получение списка всех книг"
+					},
+					"response": []
+				},
+				{
+					"name": "GetBookById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoiVXNlciIsImlhdCI6MTczMDkwMzU2OSwiZXhwIjoxNzMwOTA1MzY5fQ.qF7HJCojeVHCTsxuuViJ96JTQBQuL67gvi-Ql3woEd0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/book/get/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"get",
+								"1"
+							]
+						},
+						"description": "Получение книги по id"
+					},
+					"response": []
+				},
+				{
+					"name": "GetBookByISBN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoiVXNlciIsImlhdCI6MTczMDkwMzU2OSwiZXhwIjoxNzMwOTA1MzY5fQ.qF7HJCojeVHCTsxuuViJ96JTQBQuL67gvi-Ql3woEd0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/book/get/isbn/978-3-16-148410-0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"get",
+								"isbn",
+								"978-3-16-148410-0"
+							]
+						},
+						"description": "Получение книги по ISBN"
+					},
+					"response": []
+				},
+				{
+					"name": "SaveBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl0sInN1YiI6IkFkbWluIiwiaWF0IjoxNzMwOTA0MTg4LCJleHAiOjE3MzA5MDU5ODh9.mSnEQnC1rhmeVJ23mQp3sBxDWc8qQjpKFbKofRQYq8U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isbn\": \"978-3-16-148410-5\",\r\n    \"name\": \"The Great Gatsby\",\r\n    \"genre\": \"Classic\",\r\n    \"description\": \"A novel set in the Roaring Twenties, narrating the story of Jay Gatsby and his unrequited love for Daisy Buchanan.\",\r\n    \"author\": \"F. Scott Fitzgerald\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/book/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"save"
+							]
+						},
+						"description": "Добавление новой книги"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl0sInN1YiI6IkFkbWluIiwiaWF0IjoxNzMwOTA0MTg4LCJleHAiOjE3MzA5MDU5ODh9.mSnEQnC1rhmeVJ23mQp3sBxDWc8qQjpKFbKofRQYq8U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"isbn\": \"978-3-16-148410-3\",\r\n    \"name\": \"The Great Gatsby\",\r\n    \"genre\": \"Classic\",\r\n    \"description\": \"A novel set in the Roaring Twenties, narrating the story of Jay Gatsby and his unrequited love for Daisy Buchanan.\",\r\n    \"author\": \"F. Scott Fitzgerald\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/book/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"update"
+							]
+						},
+						"description": "Обнолвение существующей книги"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl0sInN1YiI6IkFkbWluIiwiaWF0IjoxNzMwOTA0MTg4LCJleHAiOjE3MzA5MDU5ODh9.mSnEQnC1rhmeVJ23mQp3sBxDWc8qQjpKFbKofRQYq8U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/book/delete/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"delete",
+								"3"
+							]
+						},
+						"description": "Удаление книги по id"
+					},
+					"response": []
+				}
+			],
+			"description": "Папка применятся для тестирования HTTP запросов, связанных с книгами. Неавторизированные пользователи не имеют доступа к этим операциям. Пользователям с ролью USER доступны все GET запросы. Пользователю с ролью ADMIN доступны все запросы. Только нужно вставить токен в заговолок Authorization в Bearer token.",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Library",
+			"item": [
+				{
+					"name": "GetFreeBooks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Получение списка всех свободных книг"
+					},
+					"response": []
+				},
+				{
+					"name": "GetBookStatuts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Получение всех статусов книг"
+					},
+					"response": []
+				},
+				{
+					"name": "GetBookStatusById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Получение статуса книги по id"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateBookStatus",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl0sInN1YiI6IkFkbWluIiwiaWF0IjoxNzMwOTA0MTg4LCJleHAiOjE3MzA5MDU5ODh9.mSnEQnC1rhmeVJ23mQp3sBxDWc8qQjpKFbKofRQYq8U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"borrowedAt\": \"2024-11-03 20:47:43\",\r\n        \"dueDate\": \"2024-11-13 20:47:43\",\r\n        \"book\": {\r\n            \"id\": 1,\r\n            \"name\": \"The Great Gatsby\",\r\n            \"genre\": \"Classic\",\r\n            \"description\": \"A novel set in the Roaring Twenties, narrating the story of Jay Gatsby and his unrequited love for Daisy Buchanan.\",\r\n            \"author\": \"F. Scott Fitzgerald\",\r\n            \"isbn\": \"978-3-16-148410-5\"\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/library/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"library",
+								"update"
+							]
+						},
+						"description": "Обновление статуса существующей книги"
+					},
+					"response": []
+				}
+			],
+			"description": "В папке содержаться методы для работы со статусами книг. В тестовом задании было предложено реализовать сервис, который хранит поля:  \na. О книге (ID)\n\nb. Время, когда книгу взяли\n\nc. Время, когда книгу нужно вернуть  \nТак как тестовое задание сделано на монолитной архитектуре, я решил создать таблицу bookStatus со связью OneToOne с таблицой Book, которая и хранит в себе данные поля.  \nПользователям с ролью USER доступны все GET запросы. Пользователю с ролью ADMIN доступны все запросы."
+		}
+	]
+}
