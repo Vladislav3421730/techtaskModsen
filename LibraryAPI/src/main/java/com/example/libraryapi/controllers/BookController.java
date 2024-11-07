@@ -123,6 +123,6 @@ public class BookController {
     @DeleteMapping(value = "/delete/{book_id}", produces = "application/json")
     public ResponseEntity<ResponseDto> deleteBook(@PathVariable Long book_id) {
         bookService.delete(book_id);
-        return ResponseEntity.ok(new ResponseDto(String.format("Книга с ID %d была удалена", book_id)));
+        return ResponseEntity.ok(new ResponseDto(String.format("Book with id %d has been deleted", book_id)));
     }
 }
